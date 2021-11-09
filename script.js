@@ -43,17 +43,12 @@ function nextQuestion() {
       button.removeEventListener('click', selectAnswer);
     });
   } else {
-    showQuestion(questions[questionIndex]);
+    questionElement.innerText = questions[questionIndex].question;
+    answerButtonsElements.forEach((button, index) => {
+      button.innerText = questions[questionIndex].answers[index].text;
+      button.dataset.correct = questions[questionIndex].answers[index].correct;
+    });
   }
-}
-
-function showQuestion(question) {
-  questionElement.innerText = question.question;
-
-  answerButtonsElements.forEach((button, index) => {
-    button.innerText = questions[questionIndex].answers[index].text;
-    button.dataset.correct = questions[questionIndex].answers[index].correct;
-  });
 }
 
 function selectAnswer(e) {
